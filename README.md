@@ -7,7 +7,7 @@ React によるフロントエンドを Docker コンテナ化し、GCP の Clou
 2. [React アプリの Docker コンテナ化](##2.-React-アプリのコンテナ化)
 3. [GCP 周りの諸設定](##3.GCP-周りの諸設定)
 4. [GCP の Container Registry への Docker Push](##4.-GCP-の-Container-Registry-への-Docker-Push)
-5. [GCP へプッシュした Docker コンテナをベースにした VM インスタンスの起動](##5.-GCP-へプッシュした-Docker-コンテナをベースにした-VM-インスタンスの起動)
+5. [Cloud Engine の VM インスタンスで Docker コンテナを起動](##5.-Cloud-Engine-の-VM-インスタンスで-Docker-コンテナを起動)
 
 > 注意：npm や docker のインストールについては済んでいるものとして手順を省略する
 
@@ -191,7 +191,7 @@ $ docker push us.gcr.io/[プロジェクトID]/frontend
 
 もしタグのイメージ名を `frontend` 以外にしている場合は、ここも合わせて変更が必要。
 
-## 5. GCP へプッシュした Docker コンテナをベースにした VM インスタンスの起動
+## 5. Cloud Engine の VM インスタンスで Docker コンテナを起動
 
 ここも先程紹介した [Qiita - docker イメージ を GCE で起動する方法](https://qiita.com/na59ri/items/c540d9d16a1fc1c5a9c4) が写真付きでわかりやすいので、ここでは省略する。  
 port は 80 なので、記事内で行われているファイアウォールの設定などは不要。
