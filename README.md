@@ -25,7 +25,7 @@ $ npx create-react-app frontend --template typescript
 
 ### 2.1 Docker イメージの作成
 
-`/frontend` に `Dockerfile` を作成する。
+`/frontend` に `Dockerfile` を作成する。(ファイル作成のコマンドについては以降手順は省略する)
 
 ```bash
 $ cd frontend
@@ -51,8 +51,8 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-`# Stage 1` では `Node.js` のコンテナに [1.](##1.Reactによるフロントエンドの作成) で作った React アプリをコピーしビルドする。  
-`# Stage 2` では `NGINX` のコンテナへ先程ビルドしたファイルをコピーし、port 80 で起動する。
+`# Stage 1` では `Node.js` のコンテナに [1.](##1.Reactによるフロントエンドの作成) で作った React アプリをコピーしビルドしている。  
+`# Stage 2` では `NGINX` のコンテナへ先程ビルドしたファイルをコピーし、port 80 で起動している。
 
 また、ここで `/frontend` に `nginx.conf` も以下の通り作成する。  
 この設定は [Deploy your Create React App with Docker and Nginx](https://medium.com/yld-blog/deploy-your-create-react-app-with-docker-and-ngnix-653e94ffb537) を参考にした。
@@ -119,6 +119,14 @@ http {
         }
     }
 }
+```
+
+最後に、同じく `frontend` に `.dockerignore` ファイルも以下の通り作成しておく。
+
+```
+.git
+node_modules
+build
 ```
 
 以上で React アプリを起動するための Docker イメージが完成したので、以下のコマンドでイメージをビルドする。
