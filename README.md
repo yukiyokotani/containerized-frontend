@@ -1,7 +1,7 @@
 # React アプリケーションの GCP へのデプロイ
 
 React によるフロントエンドを Docker コンテナ化し、GCP の Cloud Engine 上にデプロイする手順を示す。  
-作業の大きな流れは以下の通り。
+大まかな作業手順は以下の通り。
 
 1. [React によるフロントエンドの作成](##1.-React-によるフロントエンドの作成)
 2. [React アプリの Docker コンテナ化](##2.-React-アプリのコンテナ化)
@@ -9,7 +9,7 @@ React によるフロントエンドを Docker コンテナ化し、GCP の Clou
 4. [GCP の Container Registry への Docker Push](##4.-GCP-の-Container-Registry-への-Docker-Push)
 5. [GCP へプッシュした Docker コンテナをベースにした VM インスタンスの起動](##5.-GCP-へプッシュした-Docker-コンテナをベースにした-VM-インスタンスの起動)
 
-> 注意：npm や docker, gcloud のインストールについては済んでいるものとして手順を省略する
+> 注意：npm や docker のインストールについては済んでいるものとして手順を省略する
 
 ## 1. React によるフロントエンドの作成
 
@@ -51,8 +51,8 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-`Stage 1` では `Node.js` のコンテナに [1.](##1.Reactによるフロントエンドの作成) で作った React アプリをコピーしビルドする。  
-`Stage 2` では `NGINX` のコンテナへ先程ビルドしたファイルをコピーし、port 80 で起動する。
+`# Stage 1` では `Node.js` のコンテナに [1.](##1.Reactによるフロントエンドの作成) で作った React アプリをコピーしビルドする。  
+`# Stage 2` では `NGINX` のコンテナへ先程ビルドしたファイルをコピーし、port 80 で起動する。
 
 また、ここで `/frontend` に `nginx.conf` も以下の通り作成する。  
 この設定は [Deploy your Create React App with Docker and Nginx](https://medium.com/yld-blog/deploy-your-create-react-app-with-docker-and-ngnix-653e94ffb537) を参考にした。
