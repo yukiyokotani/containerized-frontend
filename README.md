@@ -151,7 +151,7 @@ $ docker run --rm -d -p 80:80 frontend:1.0
 ## 3. GCP 周りの諸設定
 
 所有している Google アカウントの GCP を有効化し、新規プロジェクトを作成する。  
-リージョンやリソースの設定については以下などを参考に、適当に設定する。  
+リージョンやリソースの設定については以下を参考に、適当に設定する。  
 [Qiita - これから始める GCP（GCE）　安全に無料枠を使い倒せ](https://qiita.com/Brutus/items/22dfd31a681b67837a74)
 
 > 一応インスタンスを起動して、確認してすぐに停止、くらいだと請求 0 円なので、  
@@ -177,11 +177,19 @@ $ gcloud auth configure-docker
 まず、[2.](##2.-React-アプリのコンテナ化) で作成した Docker イメージ `frontend:1.0` に、GCP へプッシュするためのタグをつける。
 
 ```
-$ docker tag frontend:1.0 us.gcr.io/プロジェクトID/frontend
+$ docker tag frontend:1.0 us.gcr.io/[プロジェクトID]/frontend
 ```
 
 ここで、`プロジェクトID` は [3.](##3.GCP-周りの諸設定) で作成したプロジェクトの ID なので、GCP 上で確認し適宜指定する。  
 また、最後の `/frontend` のところは GCP 上でのイメージ名なので `frontend` である必要はない。
+
+タグをつけたら、Docker イメージをプッシュする。
+
+```
+$ docker push us.gcr.io/[プロジェクトID]/frontend
+```
+
+もしタグのイメージ名を `frontend` 以外にしている場合は、ここも合わせて変更が必要。
 
 ## 5. GCP へプッシュした Docker コンテナをベースにした VM インスタンスの起動
 
